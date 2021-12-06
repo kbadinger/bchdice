@@ -13,7 +13,8 @@
     "react-scripts": "3.4.3",
     "ual-anchor": "^0.5.1",
     "ual-ledger": "^0.3.0",
-    "ual-reactjs-renderer": "^0.3.1"
+    "ual-reactjs-renderer": "^0.3.1",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
