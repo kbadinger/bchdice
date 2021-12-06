@@ -1,21 +1,19 @@
 import { JsonRpc } from "eosjs";
 import { deserialize, ObjectSchema } from "atomicassets";
-import React, { StrictMode, useEffect, useState } from "react";
+import React from "react";
 import {
   Button,
   Card,
-  CardMedia,
+   
   CardHeader,
   Typography,
   CardContent,
-  Grid,
-  requirePropFactory,
+  Grid, 
 } from "@material-ui/core";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./droplist.css";
-import { makeStyles } from "@material-ui/styles";
-
+ 
 const defaultState = {
   activeUser: null,
   accountName: "",
@@ -45,8 +43,7 @@ const cardstyleRed = {
   borderColor: "red",
   borderStyle: "solid",
 };
-
-const WaxUsd = 0.13;
+ 
 
 class DropListApp extends React.Component {
   static displayName = "BCH Draco collection";
@@ -103,7 +100,7 @@ class DropListApp extends React.Component {
         for (let itemNdx in resp.rows) {
           let item = resp.rows[itemNdx];
 
-          if (item.schema_name == "bcheroes1") {
+          if (item.schema_name === "bcheroes1") {
             ctr++;
 
             let os = ObjectSchema([
@@ -153,11 +150,8 @@ class DropListApp extends React.Component {
   }
 
   componentDidUpdate() {
-    const {
-      //  ual: { activeUser },
-    } = this.props;
-
-    //    this.setState(defaultState);
+  
+ 
   }
 
   renderLogoutBtn = () => {};
@@ -182,19 +176,19 @@ class DropListApp extends React.Component {
 
     var haveCollection = {};
 
-    while (lb != newAsset) {
+    while (lb !== newAsset) {
       newAsset = lb;
 
       let resp = await this.searchAssets(lb);
 
       for (let itemNdx in resp.rows) {
-        {
+        
           lb = resp.rows[itemNdx].asset_id;
 
           var tid = resp.rows[itemNdx].template_id;
 
           const searchIndex = this.state.drops.findIndex(
-            (d) => d.template_id == resp.rows[itemNdx].template_id
+            (d) => d.template_id === resp.rows[itemNdx].template_id
           );
 
           if (searchIndex >= 0) {
@@ -209,7 +203,7 @@ class DropListApp extends React.Component {
               drops: this.state.drops.sort(function(a, b){return a.numberHad-b.numberHad}),
             }));
           }
-        }
+       
       }
     }
   };
@@ -233,12 +227,7 @@ class DropListApp extends React.Component {
   renderDropForm = () => {
     const { dropItems } = this.state;
 
-    const part = this.partition;
-
-    const rpc = this.state.rpc;
-
-    const bd = this.buyDrop;
-
+   
     return (
       <div
         style={{
@@ -311,12 +300,11 @@ class DropListApp extends React.Component {
 
                 var have = item.numberHad;
 
-                var d1 = new Date(item.start_time * 1000);
-
+                
                 let img = "";
 
                 if (item.imgTag != null && item.imgTag.length > 0) {
-                  img = <img style={picture} src={item.imgTag} />;
+                  img = <img style={picture} src={item.imgTag}  alt="bch dice" />;
                 }
 
                 return (
