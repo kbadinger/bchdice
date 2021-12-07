@@ -20,6 +20,7 @@ const defaultState = {
   dropItems: "",
   drops: [],
   statusDisplay: "",
+  loading: false,
 };
 
 var ourNetwork = {
@@ -176,6 +177,10 @@ class DropListApp extends React.Component {
 
     var haveCollection = {};
 
+    this.setState((state) => ({
+      ...this.state,
+      loading: true}));
+
     while (lb !== newAsset) {
       newAsset = lb;
 
@@ -206,6 +211,13 @@ class DropListApp extends React.Component {
        
       }
     }
+
+
+    this.setState((state) => ({
+      ...this.state,
+      loading: false}));
+
+
   };
 
   async searchAssets(startingAsset) {
@@ -229,8 +241,13 @@ class DropListApp extends React.Component {
 
    
     return (
+      <div>
+        {this.state.loading ?
+<div style={{position: "absolute", backgroundPosition: "center", zIndex: "100", top: "50px", width: '100%', height: '400px', backgroundRepeat: 'no-repeat', backgroundImage: 'url(Square-1s-200px.gif)'}}></div>
+: ''}
       <div
         style={{
+          position: "relative",
           marginLeft: "auto",
           marginRight: "auto",
           width: "100%",
@@ -333,8 +350,10 @@ class DropListApp extends React.Component {
             </Grid>
           </div>
         </div>
-      </div>
-    );
+        </div> </div>
+   
+   
+   );
   };
 
   render() {
