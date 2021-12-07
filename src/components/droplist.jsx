@@ -4,7 +4,7 @@ import React from "react";
 import {
   Button,
   Card,
-   
+   Link,
   CardHeader,
   Typography,
   CardContent,
@@ -326,7 +326,8 @@ class DropListApp extends React.Component {
 
                 return (
                   <Grid item xs={12} sm={6} md={4} key={item.drop_id}>
-                    <Card style={have > 0 ? cardstyleGreen : cardstyleRed}>
+                    <div style={{ cursor: 'pointer'}} onClick={() => window.open('https://wax.atomichub.io/market?collection_name=dracodice&order=asc&schema_name=bcheroes1&sort=price&symbol=WAX&template_id=' + item.template_id, '_blank')}> 
+                    <Card  style={have > 0 ? cardstyleGreen : cardstyleRed}>
                       <CardHeader
                         title={item.collection_name ?? ""}
                         subheader={item.drop_id ?? ""}
@@ -344,6 +345,7 @@ class DropListApp extends React.Component {
                         </Typography>
                       </CardContent>
                     </Card>
+                    </div>
                   </Grid>
                 );
               })}
