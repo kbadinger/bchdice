@@ -4,7 +4,7 @@ import React from "react";
 import {
   Button,
   Card,
-   Link,
+
   CardHeader,
   Typography,
   CardContent,
@@ -323,10 +323,10 @@ class DropListApp extends React.Component {
                 if (item.imgTag != null && item.imgTag.length > 0) {
                   img = <img style={picture} src={item.imgTag}  alt="bch dice" />;
                 }
-
+//                https://wax.atomichub.io/profile/mzhau.wam?collection_name=dracodice&order=desc&sort=transferred&template_id=357144
                 return (
-                  <Grid item xs={12} sm={6} md={4} key={item.drop_id}>
-                    <div style={{ cursor: 'pointer'}} onClick={() => window.open('https://wax.atomichub.io/market?collection_name=dracodice&order=asc&schema_name=bcheroes1&sort=price&symbol=WAX&template_id=' + item.template_id, '_blank')}> 
+                  <Grid item xs={12} sm={6} md={4} key={item.template_id}>
+          
                     <Card  style={have > 0 ? cardstyleGreen : cardstyleRed}>
                       <CardHeader
                         title={item.collection_name ?? ""}
@@ -343,9 +343,14 @@ class DropListApp extends React.Component {
                           <br />
                           Number of Assets: {have}
                         </Typography>
+                        <div >
+                        <div style={{float: 'left', padding: '6px'}}> 
+                        <Button size="small" onClick={() => window.open('https://wax.atomichub.io/market?collection_name=dracodice&order=asc&schema_name=bcheroes1&sort=price&symbol=WAX&template_id=' + item.template_id, '_blank')} variant="contained">Buy</Button></div>
+                        <div style={{float: 'right',  padding: '6px'}}> <Button  onClick={() => window.open('https://wax.atomichub.io/profile/'+ dropItems +'?collection_name=dracodice&order=desc&sort=transferred&template_id=' + item.template_id, '_blank')} disabled={have === 0 ? true : false }  size="small"  variant="contained">List</Button></div>
+                        </div>
                       </CardContent>
                     </Card>
-                    </div>
+            
                   </Grid>
                 );
               })}
